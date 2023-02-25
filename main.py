@@ -64,7 +64,6 @@ def movePiece(xy,selection):
         print("The move is the same as the section X:",x,"Y:",y)
         return False
     if abs(x-selectX) == 1 and abs(y-selectY) == 1:
-        print("HELLO")
         if board[x][y] == "X" or board[x][y] == "P":
             print("Unable to move, piece already in place X:",x,"Y:",y)
             return False
