@@ -21,6 +21,11 @@ def main():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
+            if pygame.mouse.get_pressed()[0]:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                board.getPieceCoordinates(mouse_x,mouse_y)
+
+
         board.draw(WIN)
         pygame.display.update()
     pygame.quit()
