@@ -31,6 +31,14 @@ class Piece:
         radius = SQUARE_SIZE//2 - self.Padding
         pygame.draw.circle(win, self.color, (self.x, self.y), radius + self.Outline)
         pygame.draw.circle(win, self.color, (self.x, self.y), radius)
+    
+    def piece_location(self):
+        xy_location = [self.y,self.x]
+        print("from piece location",xy_location)
+        return xy_location
         
+    def __str__(self):
+        return str(self.row)+str(self.col)+str(self.color)
+    
     def __repr__(self):
-        return str(self.color)
+        return f"{self.row}{self.col}{self.color}"

@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 rows, cols = 8,8
 pieces = []
 select = ''
 move = ''
 board = [[0 for x in range(rows)] for y in range(cols)] 
+=======
+import pygame
+import time
+from Checkers.constants import Width, Height
+from Checkers.board import Board
+>>>>>>> Stashed changes
 
 def pieceInt():
     count = 0
@@ -81,8 +88,29 @@ def movePiece(xy,selection):
         print("Invalid move",x,y)
         return False
 
+<<<<<<< Updated upstream
 boardInt()
 printBoard()
+=======
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pass
+            if pygame.mouse.get_pressed()[0]:
+                time.sleep(0.1)
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                selection = board.selection(mouse_y,mouse_x)
+                if board.valid_selection(mouse_y,mouse_x): 
+                    print("selection was valid, inside the while loop")               
+                    while not pygame.mouse.get_pressed()[2]:
+                        pygame.event.clear()
+                        if pygame.mouse.get_pressed()[0]:                            
+                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                            print("Press right mouse to exit")
+                            board.move(mouse_y,mouse_x,selection)
+                            break
+                    print("Out of loop")
+            #print("out of all ifs")
+
+>>>>>>> Stashed changes
 
 while select != '-1':
     select = input("Select your piece: ")
