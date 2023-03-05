@@ -18,24 +18,15 @@ class Board():
 
     def create_board(self):
         for row in range(Rows):
-<<<<<<< Updated upstream
-            self.board.append([])
-            for col in range(Cols):
-=======
             self.board.append([]) # 2d array at the start of each row
             for col in range(Cols):              
->>>>>>> Stashed changes
                 if col % 2 == ((row + 1) % 2):
                     if row < 3:
                         self.board[row].append(Piece(row, col, White))
                     elif row > 4:
                         self.board[row].append(Piece(row, col, Red))
                     else:
-<<<<<<< Updated upstream
-                        self.board[row].append(0)
-=======
                         self.board[row].append(0) 
->>>>>>> Stashed changes
                 else:
                     self.board[row].append(0)
         print(self.board)
@@ -46,9 +37,6 @@ class Board():
             for col in range (Cols):
                 piece = self.board[row][col]
                 if piece != 0:
-<<<<<<< Updated upstream
-                    piece.draw(win)
-=======
                     piece.draw(win) #This is a Piece object!!
         #print("draw function\n",self.board)
                     
@@ -77,6 +65,7 @@ class Board():
         print("this is the selection",selection)
         move = self.board[x//100][y//100]
         print("this is the move",move)
+        print("this is x//100",x//100,"this is y//100",y//100)
         #move_x = move.get_x_location()//100
         #move_y = move.get_y_location()//100
         selection_x = selection[0]//100
@@ -107,4 +96,3 @@ class Board():
                 print("Piece already there!")
         else:
             print("Invalid move")
->>>>>>> Stashed changes
