@@ -51,15 +51,17 @@ class Board():
             return 1
         
     def move(self,x,y):
+
         piece = self.board[x][y]
         if piece == self.selected_piece:
             print("Same piece")
+            return
         elif piece == 0:
             if abs(x-self.selected_piece.row) == 1 and abs(y-self.selected_piece.col) == 1:   
                 self.board[x][y] = Piece(x,y,self.selected_piece.color,0)
                 self.board[self.selected_piece.row][self.selected_piece.col] = 0
                 self.selected_piece = 0
-
+                return
             elif abs(x-self.selected_piece.row) == 2 and abs(y-self.selected_piece.col) == 2:
                 mid_x = (int)((self.selected_piece.row+x)/2)
                 mid_y = (int)((self.selected_piece.col+y)/2)
@@ -79,9 +81,9 @@ class Board():
                     self.board[x][y] = Piece(x,y,self.selected_piece.color,0)
                     self.selected_piece = 0
                     print("red white",self.red_left,self.white_left)
+                    return
 
-                else:
-                    pass
+                
 
             
             
