@@ -10,3 +10,8 @@ White = (255, 255, 255)
 Black = (0, 0, 0)
 Blue = (0, 0, 255)
 Grey = (128, 128, 128)
+Green = (0,255,0)
+
+FPS = 60
+
+WIN = pygame.display.set_mode((Width, Height))
