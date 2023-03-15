@@ -14,10 +14,7 @@ def convert(x,y):
 def main():
     run = True
     clock = pygame.time.Clock()
-    board = Board()
     game = Game()
-    #game.game_state(2)
-    selected = False
     while run:
         clock.tick(FPS)
         

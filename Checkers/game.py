@@ -18,6 +18,8 @@ class Game():
         elif state == 3:
             print("SELECTED BEFORE CHANGE",self.main.selected)
             self.main.selected = False
+            self.main.draw()
+            self.main.player_turn -= 1
         else:
             print("stateless")
         
