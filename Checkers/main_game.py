@@ -36,12 +36,12 @@ class Main_Game():
                 if piece.color == Red and self.player_turn % 2 == 0:
                     self.selected = True
                     self.selected_piece = piece
-                    self.player_turn += 1
+                    # self.player_turn += 1
                     print("RED TURN")
                 elif piece.color == White and self.player_turn % 2 == 1:
                     self.selected = True
                     self.selected_piece = piece
-                    self.player_turn += 1
+                    # self.player_turn += 1
                     print("WHITE TURN")
                 
                 #piece.draw_target(WIN,x,y)
@@ -82,6 +82,14 @@ class Main_Game():
         if self.selected:
             print("INSIDE OF MOVE")
             self.draw_hint = False
+            direction = 0
+            color = 0
+            if self.player_turn % 2 == 0:
+                direction = -1
+                color = Red
+            else:
+                color = White
+                direction = 1
             #self.hint = []
             piece = self.board[x][y]
 
@@ -90,7 +98,8 @@ class Main_Game():
                     # self.board[x][y] = Piece(x,y,self.selected_piece.color,0)
                     # self.board[self.selected_piece.row][self.selected_piece.col] = 0
                     # self.selected_piece = 0
-                    if self.selected_piece.color == Red and self.selected_piece.row-1 == x:
+                    #print("Color and Direction and Selected Piece and X",color,x)
+                    if self.selected_piece.color == color and self.selected_piece.row+direction == x:
                         self.board[x][y] = self.selected_piece
                         self.board[self.selected_piece.row][self.selected_piece.col] = 0
                         self.selected_piece.row = x
@@ -98,16 +107,17 @@ class Main_Game():
                         self.selected_piece.calc_pos()
                         self.selected_piece = 0
                         self.selected = False
+                        self.player_turn += 1
                         print("MOVEMENT FROM RED")
-                    elif self.selected_piece.color == White and self.selected_piece.row+1 == x:
-                        self.board[x][y] = self.selected_piece
-                        self.board[self.selected_piece.row][self.selected_piece.col] = 0
-                        self.selected_piece.row = x
-                        self.selected_piece.col = y
-                        self.selected_piece.calc_pos()
-                        self.selected_piece = 0
-                        self.selected = False
-                        print("MOVEMENT FROM WHITE")
+                    # elif self.selected_piece.color == White and self.selected_piece.row+1 == x:
+                    #     self.board[x][y] = self.selected_piece
+                    #     self.board[self.selected_piece.row][self.selected_piece.col] = 0
+                    #     self.selected_piece.row = x
+                    #     self.selected_piece.col = y
+                    #     self.selected_piece.calc_pos()
+                    #     self.selected_piece = 0
+                    #     self.selected = False
+                    #     print("MOVEMENT FROM WHITE")
                 elif abs(x-self.selected_piece.row) == 2 and abs(y-self.selected_piece.col) == 2:
                     mid_x = (int)((self.selected_piece.row+x)/2)
                     mid_y = (int)((self.selected_piece.col+y)/2)
@@ -131,6 +141,7 @@ class Main_Game():
                         self.selected_piece.col = y
                         self.selected_piece.calc_pos()
                         self.selected_piece = 0
+                        self.player_turn += 1
                         #Previous method, it creates a new Piece 
                         # self.board[self.selected_piece.row][self.selected_piece.col] = 0
                         # self.board[x][y] = Piece(x,y,self.selected_piece.color,0)
@@ -141,3 +152,20 @@ class Main_Game():
             #     self.selected = False
             # else:
             #     return                   
+    def piece_diagonally(self,x,y):
+        piece = self.board[x][y]
+        direction = 0
+        color = 0
+        if self.player_turn % 2 == 0:
+            direction = -1
+            color = Red
+        else:
+            color = White
+            direction = 1
+        
+        if piece == 0:
+            if abs(x-self.selected_piece.row) == 1 and abs(y-self.selected_piece.col) == 1:   
+                pass
+
+        if direction+x >= 0 and direction+x <= 7:
+            pass
