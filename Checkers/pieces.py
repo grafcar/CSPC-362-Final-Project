@@ -1,8 +1,8 @@
 import pygame
-from .constants import Red, White, SQUARE_SIZE, Grey
+from .constants import Red, White, SQUARE_SIZE, Grey, crown
 
 class Piece:
-    Padding = 10
+    Padding = 15
     Outline = 2
 
     def __init__(self, row, col, color):
@@ -35,6 +35,13 @@ class Piece:
         radius = SQUARE_SIZE//2 - self.Padding
         pygame.draw.circle(win, self.color, (self.x, self.y), radius + self.Outline)
         pygame.draw.circle(win, self.color, (self.x, self.y), radius)
+        if self.king:
+            win.blit(crown, (self.x - crown.get_width()//2, self.y - crown.get_height()//2))
+    
+    def move(self, row, col):
+        self.row = row
+        self.col = col
+        self.calc_pos()
         
     def __repr__(self):
         return str(self.color)
